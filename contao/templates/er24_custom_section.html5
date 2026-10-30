@@ -1,0 +1,2 @@
+<<?= $this->hl ?>><?= $this->headline ?></<?= $this->hl ?>>
+<?= $this->text ?>

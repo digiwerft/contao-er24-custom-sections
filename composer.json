@@ -1,0 +1,63 @@
+{
+    "name": "digiwerft/contao-er24-custom-sections",
+    "description": "Eigene Abschnitte an frei wählbarer Stelle in eRecht24-Rechtstexte einfügen, ohne die Synchronisation mit eRecht24 zu verlieren.",
+    "type": "contao-bundle",
+    "license": "MIT",
+    "keywords": [
+        "contao",
+        "eRecht24",
+        "e-Recht24",
+        "Rechtstexte",
+        "Datenschutzerklärung",
+        "Impressum"
+    ],
+    "authors": [
+        {
+            "name": "DIGIWERFT GmbH",
+            "email": "github@digi-werft.de",
+            "homepage": "https://www.digiwerft.de"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/digiwerft/contao-er24-custom-sections/issues",
+        "source": "https://github.com/digiwerft/contao-er24-custom-sections"
+    },
+    "require": {
+        "php": "^8.1",
+        "contao/core-bundle": "^4.9 || ^5.0",
+        "doctrine/dbal": "^2.11 || ^3.0 || ^4.0",
+        "fenepedia/contao-er24-rechtstexte": "^1.0",
+        "psr/log": "^1.1 || ^2.0 || ^3.0",
+        "symfony/config": "^4.4 || ^5.4 || ^6.4 || ^7.0",
+        "symfony/dependency-injection": "^4.4 || ^5.4 || ^6.4 || ^7.0",
+        "symfony/http-foundation": "^4.4 || ^5.4 || ^6.4 || ^7.0",
+        "symfony/http-kernel": "^4.4 || ^5.4 || ^6.4 || ^7.0"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0",
+        "phpunit/phpunit": "^9.6 || ^10.5"
+    },
+    "conflict": {
+        "contao/manager-plugin": "<2.0 || >=3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Digiwerft\\ContaoEr24CustomSections\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Digiwerft\\ContaoEr24CustomSections\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "contao-manager-plugin": "Digiwerft\\ContaoEr24CustomSections\\ContaoManager\\Plugin"
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "contao/manager-plugin": true,
+            "php-http/discovery": true
+        }
+    }
+}

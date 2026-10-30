@@ -1,0 +1,27 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Digiwerft\ContaoEr24CustomSections\:
+        resource: ../src
+        exclude: ../src/{ContaoManager,DependencyInjection,LegalText,ContaoEr24CustomSectionsBundle.php}
+
+    # Registered via tags instead of annotations/attributes, so the same code runs on Contao 4.9 and 5.x
+    Digiwerft\ContaoEr24CustomSections\Controller\ContentElement\CustomSectionElementController:
+        public: true
+        tags:
+            - { name: contao.content_element, category: includes, type: er24_custom_section, template: ce_er24_custom_section }
+
+    Digiwerft\ContaoEr24CustomSections\EventListener\InjectCustomSectionsListener:
+        arguments:
+            $logger: '@?monolog.logger.contao'
+        tags:
+            - { name: contao.hook, hook: getContentElement, method: __invoke }
+
+    Digiwerft\ContaoEr24CustomSections\EventListener\DataContainer\CustomSectionFieldsListener:
+        tags:
+            - { name: contao.callback, table: tl_content, target: fields.er24CsTarget.options, method: onTargetOptions }
+            - { name: contao.callback, table: tl_content, target: fields.er24CsTarget.load, method: onTargetLoad }
+            - { name: contao.callback, table: tl_content, target: fields.er24CsAnchor.options, method: onAnchorOptions }
